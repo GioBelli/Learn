@@ -1,0 +1,19 @@
+.container {
+  border: 1px solid rgba(0, 0, 0, 0.46);
+  margin-right: 40%;
+  margin-left: 40%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 12px;
+  align-items: center;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+body {
+  background-color: darkslategray;
+}
