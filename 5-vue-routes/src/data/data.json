@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Vue JS",
+    "image": "https://vuejs.org/images/logo.png",
+    "description": "Vue.js is a progressive framework for building user interfaces. It is incrementally adoptable. "
+  },
+  {
+    "id": 2,
+    "name": "React JS",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+    "description": "React is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies. "
+  },
+  {
+    "id": 3,
+    "name": "Angular JS",
+    "image": "https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg",
+    "description": "Angular is a TypeScript-based open-source front-end web application framework led by the Angular Team at Google and by a community of individuals and corporations. "
+  },
+  {
+    "id": 4,
+    "name": "Node JS",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1024px-Node.js_logo.svg.png",
+    "description": "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. "
+  },
+  {
+    "id": 5,
+    "name": "Express JS",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png",
+    "description": "Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. "
+  }
+]
