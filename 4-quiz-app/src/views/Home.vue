@@ -2,11 +2,35 @@
 import { ref, watch } from "vue";
 import Card from "../components/Card.vue";
 import q from "../data/data.json";
+import gsap from "gsap";
 
 const quizes = ref(q);
 const search = ref("");
 const empty = ref(false);
 
+const beforeEnter = (el) => {
+  el.style.opacity = 0;
+  el.style.transform = "translateY(-10px)";
+  el.style.transition = "all 0.4s ease-in-out";
+};
+
+const onEnter = (el) => {
+  gsap.to(el, {
+    duration: 0.05,
+    opacity: 1,
+    y: 0,
+    delay: el.dataset.index * 0.1,
+  });
+};
+
+const onLeave = (el) => {
+  gsap.to(el, {
+    duration: 0.01,
+    opacity: 0,
+    scale: 0.1,
+    position: "absolute",
+  });
+};
 // Watch for changes in the `search` ref.
 // Filter the `q` array based on the search input.
 // Update the `quizes` ref with the filtered array.
@@ -37,16 +61,23 @@ watch(search, () => {
           No result with <b>{{ search }}</b> 🤔
         </p>
       </div>
-
-      <Card v-for="quiz in quizes" :key="quiz.id" :quiz="quiz" />
+      <TransitionGroup
+        @enter="onEnter"
+        @before-appear="beforeEnter"
+        @leave="onLeave"
+        appear
+      >
+        <Card
+          v-for="(quiz, index) in quizes"
+          :key="quiz.id"
+          :quiz="quiz"
+          :data-index="index"
+        />
+      </TransitionGroup>
     </div>
   </div>
 </template>
 <style>
-body {
-  background-color: #d5d8d6;
-}
-
 .page {
   max-width: 800px;
   display: flex;

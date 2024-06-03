@@ -34,6 +34,7 @@ const goToQuiz = () => {
 }
 .card:hover {
   background-color: rgba(255, 255, 255, 0.75);
+  transform: scale(1.05);
 }
 img {
   height: 120px;
