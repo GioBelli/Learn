@@ -1,5 +1,4 @@
 <script setup>
-import { defineEmits } from "vue";
 const { quiz } = defineProps(["quiz"]);
 
 const emit = defineEmits(["answerSelected"]);
@@ -8,6 +7,7 @@ const emit = defineEmits(["answerSelected"]);
 // It takes a boolean parameter `isCorrect` which indicates whether the answer is correct or not.
 // It emits an event called "answerSelected" with the `isCorrect` parameter as the payload.
 // This event can be listened to in the parent component to update the score or move to the next question.
+
 const answerSelected = (isCorrect) => {
   emit("answerSelected", isCorrect);
 };
