@@ -9,26 +9,29 @@ const search = ref("");
 const empty = ref(false);
 
 const beforeEnter = (el) => {
+  el.style.transform = "translateY(-20px)";
   el.style.opacity = 0;
-  el.style.transform = "translateY(-10px)";
-  el.style.transition = "all 0.4s ease-in-out";
+  // gsap.to(el, { //doesn't work well
+  //   y: -20,
+  //   opacity: 0,
+  // });
 };
 
 const onEnter = (el) => {
   gsap.to(el, {
-    duration: 0.05,
-    opacity: 1,
+    duration: 1.5,
     y: 0,
-    delay: el.dataset.index * 0.1,
+    opacity: 1,
+    ease: "elastic.out(1, 0.7)",
+    delay: el.dataset.index * 0.12,
   });
 };
 
 const onLeave = (el) => {
   gsap.to(el, {
-    duration: 0.01,
+    duration: 1,
     opacity: 0,
     scale: 0.1,
-    position: "absolute",
   });
 };
 // Watch for changes in the `search` ref.
@@ -62,8 +65,8 @@ watch(search, () => {
         </p>
       </div>
       <TransitionGroup
+        @before-enter="beforeEnter"
         @enter="onEnter"
-        @before-appear="beforeEnter"
         @leave="onLeave"
         appear
       >

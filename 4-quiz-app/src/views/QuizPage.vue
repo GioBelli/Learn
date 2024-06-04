@@ -10,11 +10,17 @@ const currentQuestion = ref(0);
 const route = useRoute();
 const correctAnswers = ref(0);
 const showResult = ref(false);
+
+// const d = data.find((item) => item.id === route.params.id);
+
 const checkAnswer = (isCorrect) => {
   if (isCorrect) {
     correctAnswers.value++;
   }
-  if (currentQuestion.value === data.length - 1) {
+  if (
+    currentQuestion.value ===
+    data[currentQuestion.value].questions.length - 1
+  ) {
     showResult.value = true;
   }
   currentQuestion.value++;
@@ -38,30 +44,41 @@ const questionStatus = computed(
 <template>
   <div class="page">
     <RouterLink to="/"><- Back</RouterLink>
-    <Header v-if="!showResult" :quiz="d" :questionStatus="questionStatus" />
+
+    <Header
+      v-if="!showResult"
+      :quiz="d"
+      :questionStatus="questionStatus"
+      :current-question="currentQuestion"
+    />
+
     <Questions
       v-if="!showResult"
       @answerSelected="checkAnswer"
       :quiz="d.questions[currentQuestion]"
     />
-    <Result
-      v-else
-      :quiz="d"
-      :questionLength="d.questions.length"
-      :correctAnswers="correctAnswers"
-    />
+
+    <Transition name="fade">
+      <Result
+        v-if="showResult"
+        :quiz="d"
+        :questionLength="d.questions.length"
+        :correctAnswers="correctAnswers"
+      />
+    </Transition>
+
+    <!-- 
     <div v-if="showResult" class="buttons">
-      <!-- <button @click="currentQuestion--">Previous</button>
-      <button @click="currentQuestion++">Next</button> -->
       <button
         @click="
           currentQuestion = 0;
           showResult = false;
+          correctAnswers = 0;
         "
       >
         Start Again
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -81,5 +98,17 @@ button {
 }
 button:hover {
   background-color: rgba(255, 255, 255, 0.077);
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease-out;
+}
+.fade-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+.fade-enter-from {
+  opacity: 0;
+  transform: scale(0.5);
 }
 </style>

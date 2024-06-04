@@ -1,16 +1,20 @@
 <script setup>
-const { quiz, questionStatus } = defineProps(["quiz", "questionStatus"]);
+const { quiz, questionStatus, currentQuestion } = defineProps([
+  "quiz",
+  "questionStatus",
+  "currentQuestion",
+]);
 </script>
 
 <template>
   <div class="header-question">
     <h1>{{ quiz.name }}</h1>
     <div class="dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+      <span :class="`dot ${currentQuestion >= 0 ? 'active' : ''}`"></span>
+      <span :class="`dot ${currentQuestion >= 1 ? 'active' : ''}`"></span>
+      <span :class="`dot ${currentQuestion >= 2 ? 'active' : ''}`"></span>
     </div>
-    <p>{{ questionStatus }} Question</p>
+    <!-- <p>{{ questionStatus }} Question</p> -->
   </div>
 </template>
 <style scoped>

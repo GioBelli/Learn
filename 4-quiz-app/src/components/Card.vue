@@ -29,13 +29,13 @@ const goToQuiz = () => {
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba(237, 243, 237, 0.67);
-  transition: all 0.2s ease-in-out;
+  /* transition: all 0.2s ease-in-out; */
   cursor: pointer;
 }
 .card:hover {
   background-color: rgba(255, 255, 255, 0.75);
-  transform: scale(1.05);
 }
+
 img {
   height: 120px;
 }
@@ -45,6 +45,7 @@ img {
   flex-direction: column;
   justify-content: start;
   height: 100%;
+  /* transition: all 0.2s ease-in-out; */
 }
 a {
   text-decoration: none;
