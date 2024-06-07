@@ -2,8 +2,9 @@
 import { ref, reactive, provide } from "vue";
 import Parent from "./components/Parent.vue";
 import useColors from "./composables/useColors";
+import { useColorsStore } from "@/stores/colors";
 
-const { colors } = useColors();
+const { colors } = useColorsStore();
 
 // const r = ref(0);
 // const g = ref(0);
